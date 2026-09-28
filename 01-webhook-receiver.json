@@ -1,0 +1,218 @@
+{
+  "updatedAt": "2026-09-27T22:06:58.609Z",
+  "createdAt": "2026-09-27T00:07:26.835Z",
+  "id": "2QaG7I4Vc1U2PVoH",
+  "name": "01 — Webhook Receiver",
+  "description": null,
+  "active": true,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "echo-receiver",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "e01d1b4f-394a-4872-9116-c3d92406c98d",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "f12b40a1-e395-4e5c-b598-03b7ab1b616e"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the raw input from the Webhook node\nconst raw = $input.first().json;\n\n// Try to find the parsed body. It could be in different places:\n//  - raw.body (when Content-Type is set correctly)\n//  - raw.body as a string (when Content-Type is missing)\n//  - fallback to empty object\nlet incoming = raw.body ?? {};\n\n// If the body came as a string, parse it\nif (typeof incoming === \"string\") {\n  try {\n    incoming = JSON.parse(incoming);\n  } catch (e) {\n    incoming = {};\n  }\n}\n\n// Extract the fields we care about\nconst name = incoming.name ?? \"Unbekannt\";\nconst message = incoming.message ?? \"Keine Nachricht\";\n\n// Build a clean response object\nreturn [{\n  json: {\n    name: name,\n    message: message,\n    received_at: new Date().toISOString(),\n    greeting: `Hallo ${name}! ${message}`\n  }\n}];"
+      },
+      "id": "c7da80fd-2140-4047-b35f-663c7e94a1dd",
+      "name": "Code in JavaScript",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        224,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "5f4772ba-301f-4dfe-bb47-095da68cd09e",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        448,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": true
+  },
+  "staticData": null,
+  "meta": null,
+  "nodeGroups": [],
+  "pinData": {},
+  "versionId": "3209228f-f453-4854-8bc1-0e541eac011d",
+  "activeVersionId": "3209228f-f453-4854-8bc1-0e541eac011d",
+  "versionCounter": 59,
+  "triggerCount": 1,
+  "sourceWorkflowId": null,
+  "tags": [],
+  "parentFolder": null,
+  "activeVersion": {
+    "updatedAt": "2026-09-27T22:18:52.000Z",
+    "createdAt": "2026-09-27T22:06:58.610Z",
+    "versionId": "3209228f-f453-4854-8bc1-0e541eac011d",
+    "workflowId": "2QaG7I4Vc1U2PVoH",
+    "nodes": [
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "echo-receiver",
+          "responseMode": "responseNode",
+          "options": {}
+        },
+        "id": "e01d1b4f-394a-4872-9116-c3d92406c98d",
+        "name": "Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2.1,
+        "position": [
+          0,
+          0
+        ],
+        "webhookId": "f12b40a1-e395-4e5c-b598-03b7ab1b616e"
+      },
+      {
+        "parameters": {
+          "jsCode": "// Get the raw input from the Webhook node\nconst raw = $input.first().json;\n\n// Try to find the parsed body. It could be in different places:\n//  - raw.body (when Content-Type is set correctly)\n//  - raw.body as a string (when Content-Type is missing)\n//  - fallback to empty object\nlet incoming = raw.body ?? {};\n\n// If the body came as a string, parse it\nif (typeof incoming === \"string\") {\n  try {\n    incoming = JSON.parse(incoming);\n  } catch (e) {\n    incoming = {};\n  }\n}\n\n// Extract the fields we care about\nconst name = incoming.name ?? \"Unbekannt\";\nconst message = incoming.message ?? \"Keine Nachricht\";\n\n// Build a clean response object\nreturn [{\n  json: {\n    name: name,\n    message: message,\n    received_at: new Date().toISOString(),\n    greeting: `Hallo ${name}! ${message}`\n  }\n}];"
+        },
+        "id": "c7da80fd-2140-4047-b35f-663c7e94a1dd",
+        "name": "Code in JavaScript",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          224,
+          0
+        ]
+      },
+      {
+        "parameters": {
+          "respondWith": "json",
+          "responseBody": "={{ $json }}",
+          "options": {}
+        },
+        "id": "5f4772ba-301f-4dfe-bb47-095da68cd09e",
+        "name": "Respond to Webhook",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "typeVersion": 1.5,
+        "position": [
+          448,
+          0
+        ]
+      }
+    ],
+    "connections": {
+      "Webhook": {
+        "main": [
+          [
+            {
+              "node": "Code in JavaScript",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code in JavaScript": {
+        "main": [
+          [
+            {
+              "node": "Respond to Webhook",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "nodeGroups": [],
+    "authors": "Chidi Franklin Ajuorah",
+    "name": "v1.1 — Robust body parsing for all clients",
+    "description": "",
+    "autosaved": true,
+    "workflowPublishHistory": [
+      {
+        "createdAt": "2026-09-27T22:18:52.836Z",
+        "id": 5,
+        "workflowId": "2QaG7I4Vc1U2PVoH",
+        "versionId": "3209228f-f453-4854-8bc1-0e541eac011d",
+        "event": "activated",
+        "userId": "8318daf3-2220-4324-a3d2-c2e588401280"
+      }
+    ]
+  },
+  "homeProject": {
+    "id": "PFO88pXgXkOhAJKV",
+    "type": "personal",
+    "name": "Chidi Franklin Ajuorah <chidifranklinajuorah@gmail.com>",
+    "icon": null
+  },
+  "sharedWithProjects": [],
+  "usedCredentials": [],
+  "scopes": [
+    "execution:reveal",
+    "workflow:create",
+    "workflow:delete",
+    "workflow:disableRedaction",
+    "workflow:enableRedaction",
+    "workflow:execute",
+    "workflow:execute-chat",
+    "workflow:export",
+    "workflow:import",
+    "workflow:list",
+    "workflow:move",
+    "workflow:publish",
+    "workflow:read",
+    "workflow:share",
+    "workflow:unpublish",
+    "workflow:unshare",
+    "workflow:update"
+  ],
+  "checksum": "e79814ec679463ffac4ec0f421053d58d84341560bfa3d2b36641ad373cfe187"
+}
