@@ -36,7 +36,7 @@ Webhook → Code (JavaScript) → Respond to Webhook
 ```
 
 ### Import This Workflow
-1. Download the workflow: [https://github.com/Franklin-Ajuorah/echo-workflows/raw/main/01-webhook-receiver.json](https://github.com/Franklin-Ajuorah/echo-workflows/raw/main/01-webhook-receiver.json)
+1. Download the workflow: [[https://github.com/Franklin-Ajuorah/echo-workflows/raw/main/01-webhook-receiver.json]](https://github.com/Franklin-Ajuorah/echo-workflows/releases/download/v1.0.0/01-webhook-receiver.json)(https://github.com/Franklin-Ajuorah/echo-workflows/raw/main/01-webhook-receiver.json)
 2. In n8n, click **Import from File**
 3. Select the downloaded JSON
 4. Update the webhook path if desired
