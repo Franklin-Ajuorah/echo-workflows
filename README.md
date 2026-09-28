@@ -17,7 +17,7 @@
 
 ### Workflow Structure
 
-![n8n workflow canvas](./screenshots/workflow-canvas.png)
+![n8n workflow canvas](./Screenshots/workflow-canvas.png)▶ Test in one click (Hoppscotch)
 
 Webhook → Code (JavaScript) → Respond to Webhook
 
@@ -34,7 +34,6 @@ Webhook → Code (JavaScript) → Respond to Webhook
   "message": "Grüße aus Nigeria"
 }
 ### Import This Workflow
-
 1. Download the workflow: https://github.com/Franklin-Ajuorah/echo-workflows/raw/main/01-webhook-receiver.json
 2. In n8n, click **Import from File**
 3. Select the downloaded JSON
