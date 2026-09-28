@@ -17,7 +17,7 @@
 
 ### Workflow Structure
 
-![n8n workflow canvas](./Screenshots/workflow-canvas.png)▶ Test in one click (Hoppscotch)
+![n8n workflow canvas](./Screenshots/workflow-canvas.png)
 
 Webhook → Code (JavaScript) → Respond to Webhook
 
