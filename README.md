@@ -23,7 +23,7 @@ Webhook → Code (JavaScript) → Respond to Webhook
 
 ### Try It Live
 
-**Production URL:** `https://franklin-ajuorah.app.n8n.cloud/webhook/echo-receiver`  
+**Production URL:** [`https://franklin-ajuorah.app.n8n.cloud/webhook/echo-receiver`](https://franklin-ajuorah.app.n8n.cloud/webhook/echo-receiver)  
 **Method:** `POST`  
 **Content-Type:** `application/json`
 
@@ -33,8 +33,10 @@ Webhook → Code (JavaScript) → Respond to Webhook
   "name": "Franklin",
   "message": "Grüße aus Nigeria"
 }
+```
+
 ### Import This Workflow
-1. Download the workflow: https://github.com/Franklin-Ajuorah/echo-workflows/raw/main/01-webhook-receiver.json
+1. Download the workflow: [01-webhook-receiver.json](https://github.com/Franklin-Ajuorah/echo-workflows/raw/main/01-webhook-receiver.json)
 2. In n8n, click **Import from File**
 3. Select the downloaded JSON
 4. Update the webhook path if desired
